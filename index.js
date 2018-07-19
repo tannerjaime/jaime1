@@ -3,14 +3,16 @@ const mathfuncs = require('./mathfuncs');
 
 const HTTP_RESPONSE_ENCODING = 'utf8';
 const http = require('http');
+
+
 const requestListener = (req, res) => {
   const maybeNumber = req.url.substr(1);
-
   if (/^\d+$/.test(maybeNumber)) {
     const number = parseInt(maybeNumber);
     console.log('got a request:', number);
 
-    res.write(`${mathfuncs.fibonacci(number)}`, HTTP_RESPONSE_ENCODING);
+    res.write(`${JSON.stringify(mathfuncs.fibonacci(number))}`, HTTP_RESPONSE_ENCODING);
+
     res.end();
   } else {
     console.error('got a bad request:', maybeNumber);
@@ -34,6 +36,9 @@ server.on('connect', debug('connect'));
 server.on('request', requestListener);
 server.on('upgrade', debug('upgrade'));
 
+
+const startServer = () => { server.listen(8080); }
+const stopServer = () => { server.close(); }
 server.listen(8080);
 
 module.exports = {

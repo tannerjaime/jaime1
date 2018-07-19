@@ -8,8 +8,10 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "jest": "^23.1.0",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jest": "^23.3.0",
+    "jest": "^23.4.1",
     "supertest": "^3.1.0"
   }
 }
