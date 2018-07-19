@@ -41,7 +41,6 @@ const startServer = () => { server.listen(8080); }
 const stopServer = () => { server.close(); }
 server.listen(8080);
 
-
 module.exports = {
   startServer,
   stopServer
